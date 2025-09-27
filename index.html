@@ -16,6 +16,9 @@
       --playBg: rgba(255,255,255,.14);
       --playBgHover: rgba(255,255,255,.22);
       --playBorder: rgba(255,255,255,.9);
+      --navBg: rgba(10,10,10,.55);
+      --navBorder: rgba(255,255,255,.12);
+      --navShadow: 0 6px 18px rgba(0,0,0,.25);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -31,26 +34,37 @@
       pointer-events:none;
     }
 
-    /* NAV superior */
+    /* NAV flotante con estado sólido al scrollear */
     .nav{
-      position:fixed;top:0;left:0;right:0;z-index:50;
+      position:fixed;top:0;left:0;right:0;z-index:60;
       display:flex;justify-content:flex-end;gap:18px;
-      padding:16px 20px;mix-blend:difference;
-      padding-top:max(16px, env(safe-area-inset-top));
+      padding:12px 16px;
+      color:#fff;
+      transition:background-color .25s ease, backdrop-filter .25s ease, -webkit-backdrop-filter .25s ease, border-color .25s ease, box-shadow .25s ease, padding .2s ease;
+      mix-blend:difference;
+      padding-top:max(12px, env(safe-area-inset-top));
     }
-    .menu{display:flex;gap:18px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.85rem}
+    .nav .menu{display:flex;gap:18px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.85rem}
+    .nav.nav--solid{
+      mix-blend:normal;
+      background:var(--navBg);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--navBorder);
+      box-shadow: var(--navShadow);
+      padding:10px 16px;
+    }
 
     /* HERO */
     .hero{position:relative;min-height:100vh;min-height:100svh;width:100%;isolation:isolate}
     .hero-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0}
-    .hero::after{content:"";position:absolute;inset:0;z-index:1;
-      background:linear-gradient(180deg,rgba(0,0,0,.18) 0%, rgba(0,0,0,.48) 55%, rgba(0,0,0,.75) 100%)}
+    .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.18) 0%, rgba(0,0,0,.48) 55%, rgba(0,0,0,.75) 100%)}
     .hero-inner{position:absolute;inset:0;display:grid;place-items:end start;padding:8vh 5vw;z-index:2}
 
-    /* Riel social */
+    /* Riel social lateral */
     .social-rail{
       position:fixed; right:12px; top:50%; transform:translateY(-50%);
-      display:flex; flex-direction:column; gap:12px; z-index:60;
+      display:flex; flex-direction:column; gap:12px; z-index:55;
       transition:opacity .25s, transform .25s;
     }
     .social-rail a{ width:28px;height:28px; display:grid; place-items:center }
@@ -78,45 +92,31 @@
     .video-wrap{display:grid;gap:18px}
     .player{ position:relative;width:100%;aspect-ratio:16/9;border-radius:0;overflow:hidden;background:#000 }
     .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0}
-    .preview{
-      position:absolute;inset:0;background:#000 url(https://img.youtube.com/vi/kUaB9VScdi0/maxresdefault.jpg) center/cover no-repeat;
-      display:grid;place-items:center;cursor:pointer;
-    }
-    .playBtn{
-      display:inline-flex;align-items:center;gap:12px;
-      padding:12px 20px;border-radius:999px;background:var(--playBg);color:#fff;font-weight:700;
-      letter-spacing:.03em;border:2px solid var(--playBorder);backdrop-filter:blur(2px);
-      transition:background .2s ease, transform .15s ease;
-    }
+    .preview{position:absolute;inset:0;background:#000 url(https://img.youtube.com/vi/kUaB9VScdi0/maxresdefault.jpg) center/cover no-repeat;display:grid;place-items:center;cursor:pointer}
+    .playBtn{display:inline-flex;align-items:center;gap:12px;padding:12px 20px;border-radius:999px;background:var(--playBg);color:#fff;font-weight:700;letter-spacing:.03em;border:2px solid var(--playBorder);backdrop-filter:blur(2px);transition:background .2s ease, transform .15s ease}
     .playBtn:hover{ background:var(--playBgHover); transform:translateY(-1px) }
     .playBtn svg{width:14px;height:14px;fill:#fff}
 
     .thumbs{display:grid;gap:18px}
     @media(min-width:820px){ .thumbs{grid-template-columns:repeat(4,1fr)} }
-
-    /* FIX: sin borde gris en thumbnails */
     .thumb,
-    button.thumb{
-      border:0 !important;
-      outline:0 !important;
-      box-shadow:none !important;
-      padding:0;
-      background:#111;
-      -webkit-tap-highlight-color:transparent;
-    }
+    button.thumb{border:0 !important;outline:0 !important;box-shadow:none !important;padding:0;background:#111;-webkit-tap-highlight-color:transparent}
     .thumb{position:relative;border-radius:0;overflow:hidden;cursor:pointer}
     .thumb img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/9;background:#000;border-radius:0;display:block;border:0}
     .thumb::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18);transition:opacity .2s}
     .thumb:hover::after{opacity:.06}
-    .thumb .label{
-      position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.55);
-      padding:6px 10px;border-radius:999px;font-size:.85rem;letter-spacing:.06em
-    }
-    .thumb .pico{
-      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-      width:34px;height:34px;border-radius:999px;border:2px solid #fff;display:grid;place-items:center
-    }
+    .thumb .label{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.55);padding:6px 10px;border-radius:999px;font-size:.85rem;letter-spacing:.06em}
+    .thumb .pico{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:999px;border:2px solid #fff;display:grid;place-items:center}
     .thumb .pico svg{width:11px;height:11px;fill:#fff;margin-left:2px}
+
+    /* Iconos horizontales al final */
+    .social-bottom{
+      display:flex; gap:16px; justify-content:center; align-items:center; flex-wrap:wrap;
+      padding:8px 0;
+    }
+    .social-bottom a{ width:28px; height:28px; display:grid; place-items:center; opacity:.9; transition:opacity .2s, transform .2s }
+    .social-bottom a:hover{ opacity:1; transform:translateY(-1px) }
+    .social-bottom img{ width:28px; height:28px; display:block }
 
     footer{background:var(--panel);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);text-align:center;color:#9a9a9a;padding:56px 0}
   </style>
@@ -126,7 +126,7 @@
   <div class="page-bg" aria-hidden="true"></div>
 
   <!-- NAV -->
-  <nav class="nav">
+  <nav class="nav" id="topNav" aria-label="Navegación principal">
     <div class="menu">
       <a href="#music">MÚSICA</a>
       <a href="#video">VIDEO</a>
@@ -167,7 +167,7 @@
     <div class="wrap">
       <h2>Releases</h2>
       <div class="grid">
-        <!-- ANTÜ (Spotify) -->
+        <!-- ANTÜ -->
         <a class="tile" href="https://open.spotify.com/intl-es/album/7dWdYfdCnAjZANqv4cCefN" target="_blank" rel="noopener">
           <img src="https://raw.githubusercontent.com/antufs/home/main/BUENASNOCHES-grande-EMBOSS-3.jpg" alt="ANTÜ — Buenas Noches, Muchas Gracias (EP, 2024)">
           <span class="overlay"><span class="t">BUENAS NOCHES, MUCHAS GRACIAS</span><span class="s">EP, 2024</span></span>
@@ -197,7 +197,7 @@
           <span class="overlay"><span class="t">LLUVIA DE PLATA</span><span class="s">SINGLE, 2020</span></span>
         </a>
 
-        <!-- MANIAC MANTU (2018 y anteriores) -->
+        <!-- MANIAC MANTU -->
         <a class="tile" href="https://open.spotify.com/intl-es/track/0g1mQR62FyCg7nQvFQgoUq?si=adc06ad4088f4270" target="_blank" rel="noopener">
           <img src="https://f4.bcbits.com/img/a3958033295_10.jpg" alt="Maniac Mantu — Demeter (single, 2018) — Antü Filardi Sabín">
           <span class="overlay"><span class="t">DEMETER</span><span class="s">SINGLE, 2018</span></span>
@@ -226,9 +226,7 @@
   <section id="video">
     <div class="wrap">
       <h2>Video</h2>
-
       <div class="video-wrap">
-        <!-- Principal: PÉSIMA IDEA -->
         <div class="player" id="playerBox">
           <div class="preview" id="previewBtn" aria-label="Reproducir Pésima Idea">
             <span class="playBtn">
@@ -237,31 +235,22 @@
             </span>
           </div>
         </div>
-
-        <!-- Thumbnails (incluye Pésima Idea para volver al principal) -->
         <div class="thumbs">
-          <!-- Pésima Idea -->
           <button class="thumb" type="button" data-id="kUaB9VScdi0" aria-label="Pésima Idea">
             <img src="https://img.youtube.com/vi/kUaB9VScdi0/hqdefault.jpg" alt="Antü Filardi Sabín — Pésima Idea (video oficial, La Tangente, Buenos Aires, Argentina)">
             <span class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
             <span class="label">Pésima Idea</span>
           </button>
-
-          <!-- Final Feliz -->
           <button class="thumb" type="button" data-id="YDlGcUvqYds" aria-label="Final Feliz">
             <img src="https://img.youtube.com/vi/YDlGcUvqYds/hqdefault.jpg" alt="Antü Filardi Sabín — Maniac Mantu — Final Feliz (video)">
             <span class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
             <span class="label">Final Feliz</span>
           </button>
-
-          <!-- Juegos de Espejos (miniatura custom) -->
           <button class="thumb" type="button" data-id="FWVS4sKcUr0" aria-label="Juegos de Espejos">
             <img src="https://github.com/antufs/home/blob/main/juegosdespejos_tecnopolis_maniac_mantu.jpg?raw=true" alt="Antü Filardi Sabín — Maniac Mantu — Juegos de Espejos (video)">
             <span class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
             <span class="label">Juegos de Espejos</span>
           </button>
-
-          <!-- Combinación (miniatura custom) -->
           <button class="thumb" type="button" data-id="gHHOheVmn7Y" aria-label="Combinación">
             <img src="https://github.com/antufs/home/blob/main/combinacion_maniacmantu.jpg?raw=true" alt="Antü Filardi Sabín — Maniac Mantu — Combinación (video)">
             <span class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
@@ -286,10 +275,36 @@
     </div>
   </section>
 
-  <footer>© ANTÜ | 2025</footer>
+  <!-- ICONOS HORIZONTALES (final) -->
+  <section aria-label="Redes sociales">
+    <div class="wrap">
+      <div class="social-bottom">
+        <a href="https://www.youtube.com/@antufs" target="_blank" rel="noopener" aria-label="YouTube — Antü">
+          <img src="https://static.wixstatic.com/media/e9bb463a1bc4434c9d33b81b1fe937f5.png?v=3" alt="YouTube — Antü">
+        </a>
+        <a href="https://open.spotify.com/artist/4VUdU55D7NI4m4z4W3hf3D" target="_blank" rel="noopener" aria-label="Spotify — Antü">
+          <img src="https://static.wixstatic.com/media/47b25b_d9ba411387ad480aab93bee5b8e02022~mv2.png?v=3" alt="Spotify — Antü">
+        </a>
+        <a href="https://www.instagram.com/antu.fs/" target="_blank" rel="noopener" aria-label="Instagram — @antu.fs">
+          <img src="https://static.wixstatic.com/media/da7ef6dd1302486c9a67baebe4b364bc.png?v=3" alt="Instagram — @antu.fs">
+        </a>
+        <a href="https://www.facebook.com/antufs" target="_blank" rel="noopener" aria-label="Facebook — antufs">
+          <img src="https://static.wixstatic.com/media/e0678ef25486466ba65ef6ad47b559e1.png?v=3" alt="Facebook — antufs">
+        </a>
+        <a href="https://maniacmantu.bandcamp.com/" target="_blank" rel="noopener" aria-label="Bandcamp — Maniac Mantu">
+          <img src="https://raw.githubusercontent.com/antufs/home/main/bandcamp-button-circle-line-white-512.png" alt="Bandcamp — Maniac Mantu">
+        </a>
+        <a href="https://music.apple.com/pe/album/sobresalto-ep/1614863374" target="_blank" rel="noopener" aria-label="Apple Music — Sobresalto">
+          <img src="https://static.wixstatic.com/media/47b25b_be33cc78ffb94796b003a0202a4ce582~mv2.png?v=3" alt="Apple Music — Sobresalto">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© ANTÜ — 2025</footer>
 
   <script>
-    // HERO: probar varias URLs (con/sin diéresis; JPG/PNG)
+    // Resolver HERO (prueba de varias URLs)
     const heroCandidates = [
       "https://raw.githubusercontent.com/antufs/home/main/Ant%C3%BC_en_vivo_La_Tangente_02.jpg",
       "https://raw.githubusercontent.com/antufs/home/main/Antu_en_vivo_La_Tangente_02.jpg",
@@ -320,6 +335,16 @@
       });
     }, {threshold:0.15});
     io.observe(hero);
+
+    // NAV: volver sólido al salir del hero
+    const topNav = document.getElementById('topNav');
+    const navObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ topNav.classList.remove('nav--solid'); }
+        else{ topNav.classList.add('nav--solid'); }
+      });
+    }, {rootMargin:"-80px 0px 0px 0px", threshold:0.05});
+    navObserver.observe(hero);
 
     // Player YouTube
     function buildSrc(id){return `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&playsinline=1&color=white&autoplay=1`;}
