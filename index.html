@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>ANTÜ</title>
-  <meta name="description" content="ANTÜ — proyecto solista de Antü Filardi Sabín. Canción, electrónica y guitarras con enfoque poético y sonido contemporáneo. Discografía, videos y bio."/>
+  <title>ANTÜ — Antü Filardi Sabín, música, bio, videos y discografía. Buenos Aires, Argentina</title>
+  <meta name="description" content="ANTÜ, proyecto musical de Antü Filardi Sabín, músico argentino con base en Buenos Aires. Discografía completa, videos y bio."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
     :root{
       --bg:#0b0b0b; --fg:#f2f2f2; --line:rgba(255,255,255,.10);
       --accent:#ffd9b6; --max:1180px; --gap:24px;
-      --panel: rgba(0,0,0,.35); /* traslúcido */
+      --panel: rgba(0,0,0,.35);
       --playBg: rgba(255,255,255,.14);
       --playBgHover: rgba(255,255,255,.22);
       --playBorder: rgba(255,255,255,.9);
@@ -23,7 +23,7 @@
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
 
-    /* Fondo blur global (sin pseudo-elementos = sin “cuadrados”) */
+    /* Fondo blur global */
     .page-bg{
       position:fixed; inset:-40vh -40vw; width:180vw; height:180vh; z-index:-3;
       background:#000 center/cover no-repeat;
@@ -40,14 +40,14 @@
     }
     .menu{display:flex;gap:18px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.85rem}
 
-    /* HERO (con <img> para iOS) */
+    /* HERO */
     .hero{position:relative;min-height:100vh;min-height:100svh;width:100%;isolation:isolate}
     .hero-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0}
     .hero::after{content:"";position:absolute;inset:0;z-index:1;
       background:linear-gradient(180deg,rgba(0,0,0,.18) 0%, rgba(0,0,0,.48) 55%, rgba(0,0,0,.75) 100%)}
     .hero-inner{position:absolute;inset:0;display:grid;place-items:end start;padding:8vh 5vw;z-index:2}
 
-    /* Riel social (íconos pequeños) */
+    /* Riel social */
     .social-rail{
       position:fixed; right:12px; top:50%; transform:translateY(-50%);
       display:flex; flex-direction:column; gap:12px; z-index:60;
@@ -62,27 +62,22 @@
     section{padding:72px 0;border-top:1px solid var(--line);background:var(--panel);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
     h2{font-family:"Syne",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:clamp(18px,2.2vw,22px);margin:0 0 18px;color:var(--accent)}
 
-    /* Releases */
+    /* Releases sin bordes curvos */
     .grid{display:grid;gap:var(--gap)}
     @media(min-width:680px){ .grid{grid-template-columns:repeat(2,1fr)} }
     @media(min-width:1024px){ .grid{grid-template-columns:repeat(4,1fr)} }
-    .tile{position:relative;border-radius:12px;overflow:hidden;background:#111}
-    .tile img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1;transition:filter .3s,transform .35s}
+    .tile{position:relative;border-radius:0;overflow:hidden;background:#111}
+    .tile img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1;transition:filter .3s,transform .35s;border-radius:0}
     .tile:hover img{filter:brightness(1.12) saturate(.88);transform:scale(1.03)}
-    .overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;text-transform:uppercase;letter-spacing:.12em;opacity:0;transition:opacity .25s ease;background:rgba(255,255,255,.20);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+    .overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;text-transform:uppercase;letter-spacing:.12em;opacity:0;transition:opacity .25s;background:rgba(255,255,255,.20);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
     .tile:hover .overlay{opacity:1}
     .overlay .t{font-family:"Syne",system-ui,sans-serif;font-weight:800}
     .overlay .s{font-size:.9rem;opacity:.9}
 
-    /* Chips */
-    .links{display:flex;flex-wrap:wrap;gap:10px}
-    .chip{border:1px solid var(--line);padding:10px 16px;border-radius:999px;text-transform:uppercase;letter-spacing:.12em;font-weight:600;font-size:.85rem}
-    .chip:hover{border-color:#fff}
-
-    /* Video */
+    /* Video sin bordes curvos */
     .video-wrap{display:grid;gap:18px}
-    .player{ position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000 }
-    .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .player{ position:relative;width:100%;aspect-ratio:16/9;border-radius:0;overflow:hidden;background:#000 }
+    .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0}
     .preview{
       position:absolute;inset:0;background:#000 url(https://img.youtube.com/vi/kUaB9VScdi0/maxresdefault.jpg) center/cover no-repeat;
       display:grid;place-items:center;cursor:pointer;
@@ -97,9 +92,20 @@
     .playBtn svg{width:14px;height:14px;fill:#fff}
 
     .thumbs{display:grid;gap:18px}
-    @media(min-width:820px){ .thumbs{grid-template-columns:repeat(3,1fr)} }
-    .thumb{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;background:#111}
-    .thumb img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/9;background:#000}
+    @media(min-width:820px){ .thumbs{grid-template-columns:repeat(4,1fr)} }
+
+    /* FIX: sin borde gris en thumbnails */
+    .thumb,
+    button.thumb{
+      border:0 !important;
+      outline:0 !important;
+      box-shadow:none !important;
+      padding:0;
+      background:#111;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .thumb{position:relative;border-radius:0;overflow:hidden;cursor:pointer}
+    .thumb img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/9;background:#000;border-radius:0;display:block;border:0}
     .thumb::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18);transition:opacity .2s}
     .thumb:hover::after{opacity:.06}
     .thumb .label{
@@ -125,35 +131,34 @@
       <a href="#music">MÚSICA</a>
       <a href="#video">VIDEO</a>
       <a href="#bio">BIO</a>
-      <a href="#links">+ LINKS</a>
     </div>
   </nav>
 
-  <!-- RIEL LATERAL (orden y URLs definitivas) -->
+  <!-- RIEL LATERAL -->
   <div class="social-rail" id="rail" aria-label="Links rápidos">
     <a href="https://www.youtube.com/@antufs" target="_blank" rel="noopener" aria-label="YouTube — Antü">
-      <img src="https://static.wixstatic.com/media/e9bb463a1bc4434c9d33b81b1fe937f5.png?v=3" alt="YouTube">
+      <img src="https://static.wixstatic.com/media/e9bb463a1bc4434c9d33b81b1fe937f5.png?v=3" alt="YouTube — Antü">
     </a>
     <a href="https://open.spotify.com/artist/4VUdU55D7NI4m4z4W3hf3D" target="_blank" rel="noopener" aria-label="Spotify — Antü">
-      <img src="https://static.wixstatic.com/media/47b25b_d9ba411387ad480aab93bee5b8e02022~mv2.png?v=3" alt="Spotify">
+      <img src="https://static.wixstatic.com/media/47b25b_d9ba411387ad480aab93bee5b8e02022~mv2.png?v=3" alt="Spotify — Antü">
     </a>
     <a href="https://www.instagram.com/antu.fs/" target="_blank" rel="noopener" aria-label="Instagram — @antu.fs">
-      <img src="https://static.wixstatic.com/media/da7ef6dd1302486c9a67baebe4b364bc.png?v=3" alt="Instagram">
+      <img src="https://static.wixstatic.com/media/da7ef6dd1302486c9a67baebe4b364bc.png?v=3" alt="Instagram — @antu.fs">
     </a>
     <a href="https://www.facebook.com/antufs" target="_blank" rel="noopener" aria-label="Facebook — antufs">
-      <img src="https://static.wixstatic.com/media/e0678ef25486466ba65ef6ad47b559e1.png?v=3" alt="Facebook">
+      <img src="https://static.wixstatic.com/media/e0678ef25486466ba65ef6ad47b559e1.png?v=3" alt="Facebook — antufs">
     </a>
     <a href="https://maniacmantu.bandcamp.com/" target="_blank" rel="noopener" aria-label="Bandcamp — Maniac Mantu">
-      <img src="https://raw.githubusercontent.com/antufs/home/main/bandcamp-button-circle-line-white-512.png" alt="Bandcamp">
+      <img src="https://raw.githubusercontent.com/antufs/home/main/bandcamp-button-circle-line-white-512.png" alt="Bandcamp — Maniac Mantu">
     </a>
     <a href="https://music.apple.com/pe/album/sobresalto-ep/1614863374" target="_blank" rel="noopener" aria-label="Apple Music — Sobresalto">
-      <img src="https://static.wixstatic.com/media/47b25b_be33cc78ffb94796b003a0202a4ce582~mv2.png?v=3" alt="Apple Music">
+      <img src="https://static.wixstatic.com/media/47b25b_be33cc78ffb94796b003a0202a4ce582~mv2.png?v=3" alt="Apple Music — Sobresalto">
     </a>
   </div>
 
-  <!-- HERO (imagen la resuelve el script) -->
-  <header class="hero" id="hero" aria-label="Antü en vivo">
-    <img id="heroImg" class="hero-img" alt="Antü — hero">
+  <!-- HERO -->
+  <header class="hero" id="hero" aria-label="Antü Filardi Sabín en vivo — Buenos Aires, Argentina">
+    <img id="heroImg" class="hero-img" alt="Antü Filardi Sabín en vivo — Buenos Aires, Argentina">
     <div class="hero-inner wrap"></div>
   </header>
 
@@ -164,49 +169,53 @@
       <div class="grid">
         <!-- ANTÜ (Spotify) -->
         <a class="tile" href="https://open.spotify.com/intl-es/album/7dWdYfdCnAjZANqv4cCefN" target="_blank" rel="noopener">
-          <img src="https://raw.githubusercontent.com/antufs/home/main/BUENASNOCHES-grande-EMBOSS-3.jpg" alt="Buenas Noches, Muchas Gracias (EP, 2024)">
+          <img src="https://raw.githubusercontent.com/antufs/home/main/BUENASNOCHES-grande-EMBOSS-3.jpg" alt="ANTÜ — Buenas Noches, Muchas Gracias (EP, 2024)">
           <span class="overlay"><span class="t">BUENAS NOCHES, MUCHAS GRACIAS</span><span class="s">EP, 2024</span></span>
         </a>
         <a class="tile" href="https://open.spotify.com/intl-es/album/44ufv6xvc8k3mpDwtsSrJ4" target="_blank" rel="noopener">
-          <img src="https://raw.githubusercontent.com/antufs/home/main/CLIMA-NUESTRO_ARTCOVER_OK.jpg" alt="Clima Nuestro (single, 2024)">
+          <img src="https://raw.githubusercontent.com/antufs/home/main/CLIMA-NUESTRO_ARTCOVER_OK.jpg" alt="ANTÜ — Clima Nuestro (single, 2024)">
           <span class="overlay"><span class="t">CLIMA NUESTRO</span><span class="s">SINGLE, 2024</span></span>
         </a>
         <a class="tile" href="https://open.spotify.com/intl-es/album/13GD7ic2DUEkxegRCUD1pO" target="_blank" rel="noopener">
-          <img src="https://raw.githubusercontent.com/antufs/home/main/CANCION-DE-ENERO_ARTCOVER_02_OK.jpg" alt="Canción de Enero (single, 2023)">
+          <img src="https://raw.githubusercontent.com/antufs/home/main/CANCION-DE-ENERO_ARTCOVER_02_OK.jpg" alt="ANTÜ — Canción de Enero (single, 2023)">
           <span class="overlay"><span class="t">CANCIÓN DE ENERO</span><span class="s">SINGLE, 2023</span></span>
         </a>
         <a class="tile" href="https://open.spotify.com/intl-es/album/2lqGII1JPnV5ZFQE7t4V8m" target="_blank" rel="noopener">
-          <img src="https://raw.githubusercontent.com/antufs/home/main/sos1.jpg" alt="Sos Mucho Más (single, 2023)">
+          <img src="https://raw.githubusercontent.com/antufs/home/main/sos1.jpg" alt="ANTÜ — Sos Mucho Más (single, 2023)">
           <span class="overlay"><span class="t">SOS MUCHO MÁS</span><span class="s">SINGLE, 2023</span></span>
         </a>
         <a class="tile" href="https://open.spotify.com/intl-es/album/3gwwNO0NYRwur59wiUsdN6" target="_blank" rel="noopener">
-          <img src="https://raw.githubusercontent.com/antufs/home/main/sobresalto-arte.jpg" alt="SOBRESALTO (álbum, 2022)">
+          <img src="https://raw.githubusercontent.com/antufs/home/main/sobresalto-arte.jpg" alt="ANTÜ — SOBRESALTO (álbum, 2022)">
           <span class="overlay"><span class="t">SOBRESALTO</span><span class="s">ÁLBUM, 2022</span></span>
         </a>
         <a class="tile" href="https://open.spotify.com/intl-es/album/21z3C3ezWta9FwsKf8eaXT" target="_blank" rel="noopener">
-          <img src="https://raw.githubusercontent.com/antufs/home/main/lechuzasamigas_single_antu.jpg" alt="Lechuzas Amigas (single, 2021)">
+          <img src="https://raw.githubusercontent.com/antufs/home/main/lechuzasamigas_single_antu.jpg" alt="ANTÜ — Lechuzas Amigas (single, 2021)">
           <span class="overlay"><span class="t">LECHUZAS AMIGAS</span><span class="s">SINGLE, 2021</span></span>
         </a>
         <a class="tile" href="https://open.spotify.com/intl-es/album/3Br5AmEKvysIe55lGHiXec" target="_blank" rel="noopener">
-          <img src="https://raw.githubusercontent.com/antufs/home/main/lluviadeplata_antu.jpg" alt="Lluvia de Plata (single, 2020)">
+          <img src="https://raw.githubusercontent.com/antufs/home/main/lluviadeplata_antu.jpg" alt="ANTÜ — Lluvia de Plata (single, 2020)">
           <span class="overlay"><span class="t">LLUVIA DE PLATA</span><span class="s">SINGLE, 2020</span></span>
         </a>
 
-        <!-- MANIAC MANTU (Bandcamp) -->
+        <!-- MANIAC MANTU (2018 y anteriores) -->
+        <a class="tile" href="https://open.spotify.com/intl-es/track/0g1mQR62FyCg7nQvFQgoUq?si=adc06ad4088f4270" target="_blank" rel="noopener">
+          <img src="https://f4.bcbits.com/img/a3958033295_10.jpg" alt="Maniac Mantu — Demeter (single, 2018) — Antü Filardi Sabín">
+          <span class="overlay"><span class="t">DEMETER</span><span class="s">SINGLE, 2018</span></span>
+        </a>
         <a class="tile" href="https://maniacmantu.bandcamp.com/album/momento-dado" target="_blank" rel="noopener">
-          <img src="https://f4.bcbits.com/img/a1454494010_10.jpg" alt="Momento Dado (2018)">
+          <img src="https://f4.bcbits.com/img/a1454494010_10.jpg" alt="Maniac Mantu — Momento Dado (álbum, 2018) — Antü Filardi Sabín">
           <span class="overlay"><span class="t">MOMENTO DADO</span><span class="s">2018 — BANDCAMP</span></span>
         </a>
         <a class="tile" href="https://maniacmantu.bandcamp.com/album/m-m-m-e-t" target="_blank" rel="noopener">
-          <img src="https://f4.bcbits.com/img/a3129472901_10.jpg" alt="M M M E T (en vivo)">
+          <img src="https://f4.bcbits.com/img/a3129472901_10.jpg" alt="Maniac Mantu — M M M E T (en vivo) — Antü Filardi Sabín">
           <span class="overlay"><span class="t">M M M E T</span><span class="s">EN VIVO — BANDCAMP</span></span>
         </a>
         <a class="tile" href="https://maniacmantu.bandcamp.com/album/paramo-cuartal" target="_blank" rel="noopener">
-          <img src="https://f4.bcbits.com/img/a0794357816_10.jpg" alt="Páramo Cuartal (2013)">
+          <img src="https://f4.bcbits.com/img/a0794357816_10.jpg" alt="Maniac Mantu — Páramo Cuartal (álbum, 2013) — Antü Filardi Sabín">
           <span class="overlay"><span class="t">PÁRAMO CUARTAL</span><span class="s">2013 — BANDCAMP</span></span>
         </a>
         <a class="tile" href="https://maniacmantu.bandcamp.com/album/armor" target="_blank" rel="noopener">
-          <img src="https://f4.bcbits.com/img/a1208569023_10.jpg" alt="Armor (2011)">
+          <img src="https://f4.bcbits.com/img/a1208569023_10.jpg" alt="Maniac Mantu — Armor (álbum, 2011) — Antü Filardi Sabín">
           <span class="overlay"><span class="t">ARMOR</span><span class="s">2011 — BANDCAMP</span></span>
         </a>
       </div>
@@ -229,22 +238,32 @@
           </div>
         </div>
 
-        <!-- Thumbnails -->
+        <!-- Thumbnails (incluye Pésima Idea para volver al principal) -->
         <div class="thumbs">
-          <button class="thumb" type="button" data-id="YDlGcUvqYds">
-            <img src="https://img.youtube.com/vi/YDlGcUvqYds/hqdefault.jpg" alt="Final Feliz">
+          <!-- Pésima Idea -->
+          <button class="thumb" type="button" data-id="kUaB9VScdi0" aria-label="Pésima Idea">
+            <img src="https://img.youtube.com/vi/kUaB9VScdi0/hqdefault.jpg" alt="Antü Filardi Sabín — Pésima Idea (video oficial, La Tangente, Buenos Aires, Argentina)">
+            <span class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="label">Pésima Idea</span>
+          </button>
+
+          <!-- Final Feliz -->
+          <button class="thumb" type="button" data-id="YDlGcUvqYds" aria-label="Final Feliz">
+            <img src="https://img.youtube.com/vi/YDlGcUvqYds/hqdefault.jpg" alt="Antü Filardi Sabín — Maniac Mantu — Final Feliz (video)">
             <span class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
             <span class="label">Final Feliz</span>
           </button>
 
-          <button class="thumb" type="button" data-id="FWVS4sKcUr0">
-            <img src="https://img.youtube.com/vi/FWVS4sKcUr0/hqdefault.jpg" alt="Juegos de Espejos">
+          <!-- Juegos de Espejos (miniatura custom) -->
+          <button class="thumb" type="button" data-id="FWVS4sKcUr0" aria-label="Juegos de Espejos">
+            <img src="https://github.com/antufs/home/blob/main/juegosdespejos_tecnopolis_maniac_mantu.jpg?raw=true" alt="Antü Filardi Sabín — Maniac Mantu — Juegos de Espejos (video)">
             <span class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
             <span class="label">Juegos de Espejos</span>
           </button>
 
-          <button class="thumb" type="button" data-id="gHHOheVmn7Y">
-            <img src="https://img.youtube.com/vi/gHHOheVmn7Y/maxresdefault.jpg" alt="Combinación">
+          <!-- Combinación (miniatura custom) -->
+          <button class="thumb" type="button" data-id="gHHOheVmn7Y" aria-label="Combinación">
+            <img src="https://github.com/antufs/home/blob/main/combinacion_maniacmantu.jpg?raw=true" alt="Antü Filardi Sabín — Maniac Mantu — Combinación (video)">
             <span class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
             <span class="label">Combinación</span>
           </button>
@@ -258,27 +277,11 @@
     <div class="wrap">
       <h2>Bio</h2>
       <div class="bio-card" style="background:transparent;border:none">
-        <p><strong>Antü es el proyecto solista del músico argentino Antü Filardi Sabín</strong>. Su propuesta cruza canción, electrónica y guitarras, con un enfoque poético y un trabajo sonoro contemporáneo.</p>
-        <p>En 2011 publicó <em>ARMOR</em>, un disco casero que llamó la atención de Daniel Melero, quien se sumó al proceso creativo. Ese material dio origen a <em>Maniac Mantu</em>, banda con la que editó <em>Páramo Cuartal</em> (2013), el EP en vivo <em>M M M E T</em> y <em>Momento Dado</em> (2018). Con esta formación desarrolló una intensa actividad en vivo en escenarios y festivales de la escena independiente, además de sesiones audiovisuales y registros experimentales que consolidaron su búsqueda sonora y performática, antes de retomar su camino solista.</p>
-        <p>En 2021 presentó el sencillo <em>Lechuzas Amigas</em>, que abrió una nueva fase creativa. En 2022 lanzó <em>SOBRESALTO</em>, un álbum solista donde definió una estética pop experimental con bases electrónicas, guitarras y estribillos envolventes. Luego editó los sencillos <em>Canción de Enero</em> y <em>Sos Mucho Más</em> (2024). En 2024 también publicó el single <em>Clima Nuestro</em> y el EP <em>Buenas Noches, Muchas Gracias</em>, profundizando la experimentación con texturas analógicas y procesamiento sonoro.</p>
-        <p>Además de su obra personal, desarrolla una <strong>sólida</strong> trayectoria como <strong>productor e ingeniero de mezcla</strong>, trabajando con artistas como Lu Glass, Luciana Tagliapietra, Te King, Vera y las Bóvedas, Agustín Goytía, Lujo Asiático, La Vida en Familia, El Asesino del Romance, Maquillaje y El Mundo Imaginario, entre otros.</p>
-        <p>Actualmente se encuentra trabajando en <em>OTRO CANTAR</em>, un nuevo álbum que apunta a un sonido más directo y expresivo. El lanzamiento está previsto para comienzos de 2026.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- LINKS (+ YouTube Maniac Mantu) -->
-  <section id="links">
-    <div class="wrap">
-      <h2>+ LINKS</h2>
-      <div class="links">
-        <a class="chip" href="https://www.instagram.com/antu.fs/" target="_blank" rel="noopener">Instagram</a>
-        <a class="chip" href="https://www.youtube.com/@antufs" target="_blank" rel="noopener">YouTube — Antü</a>
-        <a class="chip" href="https://open.spotify.com/artist/4VUdU55D7NI4m4z4W3hf3D" target="_blank" rel="noopener">Spotify — Antü</a>
-        <a class="chip" href="https://www.youtube.com/@maniacmantu" target="_blank" rel="noopener">YouTube — Maniac Mantu</a>
-        <a class="chip" href="https://maniacmantu.bandcamp.com/" target="_blank" rel="noopener">Bandcamp — Maniac Mantu</a>
-        <a class="chip" href="https://music.apple.com/pe/album/sobresalto-ep/1614863374" target="_blank" rel="noopener">Apple Music — SOBRESALTO</a>
-        <a class="chip" href="https://www.facebook.com/antufs" target="_blank" rel="noopener">Facebook</a>
+        <p><strong>Antü Filardi Sabín es un músico argentino que cruza canción, electrónica y guitarras, con un enfoque poético y un trabajo sonoro contemporáneo.</strong></p>
+        <p>En 2011 editó <em>ARMOR</em> bajo el seudónimo <em>Maniac Mantu</em>, su primer trabajo independiente. Ese material abrió el camino a la banda homónima, con la que editó <em>Páramo Cuartal</em> (2013), el EP en vivo <em>M M M E T</em> y <em>Momento Dado</em> (2018). Con esta formación desarrolló una intensa actividad en vivo en escenarios y festivales de la escena independiente, además de sesiones audiovisuales y registros experimentales que consolidaron su búsqueda sonora y performática, dando inicio a una nueva etapa personal.</p>
+        <p>En 2021 presentó el sencillo <em>Lechuzas Amigas</em>, que abrió una nueva fase creativa. En 2022 lanzó <em>SOBRESALTO</em>, un álbum donde definió una estética pop experimental con bases electrónicas y estribillos envolventes. Luego editó los sencillos <em>Canción de Enero</em> y <em>Sos Mucho Más</em> (2024). En 2024 también publicó el single <em>Clima Nuestro</em> y el EP <em>Buenas Noches, Muchas Gracias</em>, profundizando la experimentación con texturas analógicas, procesamiento sonoro y una vuelta a las guitarras.</p>
+        <p>Además de su obra personal, desarrolla una sólida trayectoria como <strong>productor e ingeniero de mezcla</strong>, trabajando con artistas como Lu Glass, Luciana Tagliapietra, Te King, Vera y las Bóvedas, Agustín Goytía, Lujo Asiático, La Vida en Familia, El Asesino del Romance, Maquillaje y El Mundo Imaginario, entre otros.</p>
+        <p>Actualmente se encuentra trabajando en <em>OTRO CANTAR</em>, un nuevo álbum que apunta a un sonido más directo y expresivo. El lanzamiento está previsto para 2026.</p>
       </div>
     </div>
   </section>
@@ -307,7 +310,7 @@
       test.src = heroCandidates[i] + "?v=5";
     })();
 
-    // Ocultar riel social cuando no está el HERO a la vista (limpio mientras navegan)
+    // Ocultar riel social cuando no está el HERO a la vista
     const rail = document.getElementById('rail');
     const hero = document.getElementById('hero');
     const io = new IntersectionObserver((entries)=>{
