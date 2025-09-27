@@ -17,7 +17,6 @@
       --playBgHover: rgba(255,255,255,.22);
       --playBorder: rgba(255,255,255,.9);
       --navBg: rgba(10,10,10,.55);
-      --navBorder: rgba(255,255,255,.12);
       --navShadow: 0 6px 18px rgba(0,0,0,.25);
     }
     *{box-sizing:border-box}
@@ -34,25 +33,19 @@
       pointer-events:none;
     }
 
-    /* NAV flotante con estado sólido al scrollear */
+    /* NAV flotante con estado sólido al scrollear (sin borde) */
     .nav{
       position:fixed;top:0;left:0;right:0;z-index:60;
       display:flex;justify-content:flex-end;gap:18px;
-      padding:12px 16px;
-      color:#fff;
-      transition:background-color .25s ease, backdrop-filter .25s ease, -webkit-backdrop-filter .25s ease, border-color .25s ease, box-shadow .25s ease, padding .2s ease;
-      mix-blend:difference;
+      padding:12px 16px;color:#fff;mix-blend:difference;
+      transition:background-color .25s ease, backdrop-filter .25s ease, -webkit-backdrop-filter .25s ease, box-shadow .25s ease, padding .2s ease;
       padding-top:max(12px, env(safe-area-inset-top));
     }
     .nav .menu{display:flex;gap:18px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.85rem}
     .nav.nav--solid{
-      mix-blend:normal;
-      background:var(--navBg);
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--navBorder);
-      box-shadow: var(--navShadow);
-      padding:10px 16px;
+      mix-blend:normal;background:var(--navBg);
+      -webkit-backdrop-filter: blur(10px);backdrop-filter: blur(10px);
+      border-bottom:0; box-shadow: var(--navShadow); padding:10px 16px;
     }
 
     /* HERO */
@@ -71,12 +64,12 @@
     .social-rail img{ width:28px;height:28px }
     .social-rail.is-hidden{ opacity:0; pointer-events:none; transform:translateY(-50%) scale(.98) }
 
-    /* Secciones */
+    /* Secciones (sin líneas divisorias) */
     .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
-    section{padding:72px 0;border-top:1px solid var(--line);background:var(--panel);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+    section{padding:72px 0;border-top:0;background:var(--panel);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
     h2{font-family:"Syne",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:clamp(18px,2.2vw,22px);margin:0 0 18px;color:var(--accent)}
 
-    /* Releases sin bordes curvos */
+    /* Releases */
     .grid{display:grid;gap:var(--gap)}
     @media(min-width:680px){ .grid{grid-template-columns:repeat(2,1fr)} }
     @media(min-width:1024px){ .grid{grid-template-columns:repeat(4,1fr)} }
@@ -88,7 +81,7 @@
     .overlay .t{font-family:"Syne",system-ui,sans-serif;font-weight:800}
     .overlay .s{font-size:.9rem;opacity:.9}
 
-    /* Video sin bordes curvos */
+    /* Video */
     .video-wrap{display:grid;gap:18px}
     .player{ position:relative;width:100%;aspect-ratio:16/9;border-radius:0;overflow:hidden;background:#000 }
     .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0}
@@ -99,24 +92,38 @@
 
     .thumbs{display:grid;gap:18px}
     @media(min-width:820px){ .thumbs{grid-template-columns:repeat(4,1fr)} }
-    .thumb,
-    button.thumb{border:0 !important;outline:0 !important;box-shadow:none !important;padding:0;background:#111;-webkit-tap-highlight-color:transparent}
+    .thumb,button.thumb{border:0!important;outline:0!important;box-shadow:none!important;padding:0;background:#111;-webkit-tap-highlight-color:transparent}
     .thumb{position:relative;border-radius:0;overflow:hidden;cursor:pointer}
     .thumb img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/9;background:#000;border-radius:0;display:block;border:0}
-    .thumb::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18);transition:opacity .2s}
-    .thumb:hover::after{opacity:.06}
-    .thumb .label{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.55);padding:6px 10px;border-radius:999px;font-size:.85rem;letter-spacing:.06em}
+    .thumb::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.14);transition:opacity .2s}
+    .thumb:hover::after,.thumb:focus-visible::after{opacity:.06}
+
+    /* Título sutil en hover */
+    .thumb .vtitle{
+      position:absolute;left:10px;bottom:10px;color:#fff;
+      font-size:.8rem;letter-spacing:.02em;font-weight:600;
+      background:rgba(0,0,0,.35);padding:5px 8px;border-radius:6px;
+      opacity:0;transform:translateY(6px);
+      transition:opacity .18s ease, transform .18s ease, background .18s ease;
+      pointer-events:none;
+    }
+    .thumb:hover .vtitle,.thumb:focus-visible .vtitle{opacity:1;transform:translateY(0)}
     .thumb .pico{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:999px;border:2px solid #fff;display:grid;place-items:center}
     .thumb .pico svg{width:11px;height:11px;fill:#fff;margin-left:2px}
 
-    /* Iconos horizontales al final */
-    .social-bottom{
-      display:flex; gap:16px; justify-content:center; align-items:center; flex-wrap:wrap;
-      padding:8px 0;
+    /* Íconos horizontales finales: sin banda, 28px y gap 22px */
+    .final-social{
+      background:transparent !important;
+      -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
+      border-top:0; padding:40px 0 0; /* distancia desde BIO */
     }
-    .social-bottom a{ width:28px; height:28px; display:grid; place-items:center; opacity:.9; transition:opacity .2s, transform .2s }
-    .social-bottom a:hover{ opacity:1; transform:translateY(-1px) }
-    .social-bottom img{ width:28px; height:28px; display:block }
+    .social-bottom{
+      display:flex; gap:22px; justify-content:center; align-items:center; flex-wrap:wrap;
+      margin:0 auto 8px; max-width:var(--max);
+    }
+    .social-bottom a{display:grid;place-items:center;width:28px;height:28px;transition:transform .18s ease, filter .18s ease}
+    .social-bottom a:hover{ transform:translateY(-3px) scale(1.03); filter:brightness(1.05) }
+    .social-bottom img{width:28px;height:28px;display:block}
 
     footer{background:var(--panel);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);text-align:center;color:#9a9a9a;padding:56px 0}
   </style>
@@ -239,22 +246,22 @@
           <button class="thumb" type="button" data-id="kUaB9VScdi0" aria-label="Pésima Idea">
             <img src="https://img.youtube.com/vi/kUaB9VScdi0/hqdefault.jpg" alt="Antü Filardi Sabín — Pésima Idea (video oficial, La Tangente, Buenos Aires, Argentina)">
             <span class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-            <span class="label">Pésima Idea</span>
+            <span class="vtitle">Pésima Idea</span>
           </button>
           <button class="thumb" type="button" data-id="YDlGcUvqYds" aria-label="Final Feliz">
             <img src="https://img.youtube.com/vi/YDlGcUvqYds/hqdefault.jpg" alt="Antü Filardi Sabín — Maniac Mantu — Final Feliz (video)">
             <span class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-            <span class="label">Final Feliz</span>
+            <span class="vtitle">Final Feliz</span>
           </button>
           <button class="thumb" type="button" data-id="FWVS4sKcUr0" aria-label="Juegos de Espejos">
             <img src="https://github.com/antufs/home/blob/main/juegosdespejos_tecnopolis_maniac_mantu.jpg?raw=true" alt="Antü Filardi Sabín — Maniac Mantu — Juegos de Espejos (video)">
             <span class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-            <span class="label">Juegos de Espejos</span>
+            <span class="vtitle">Juegos de Espejos</span>
           </button>
           <button class="thumb" type="button" data-id="gHHOheVmn7Y" aria-label="Combinación">
             <img src="https://github.com/antufs/home/blob/main/combinacion_maniacmantu.jpg?raw=true" alt="Antü Filardi Sabín — Maniac Mantu — Combinación (video)">
             <span class="pico"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-            <span class="label">Combinación</span>
+            <span class="vtitle">Combinación</span>
           </button>
         </div>
       </div>
@@ -275,8 +282,8 @@
     </div>
   </section>
 
-  <!-- ICONOS HORIZONTALES (final) -->
-  <section aria-label="Redes sociales">
+  <!-- ÍCONOS HORIZONTALES FINALES -->
+  <section class="final-social" aria-label="Redes sociales">
     <div class="wrap">
       <div class="social-bottom">
         <a href="https://www.youtube.com/@antufs" target="_blank" rel="noopener" aria-label="YouTube — Antü">
@@ -304,7 +311,7 @@
   <footer>© ANTÜ — 2025</footer>
 
   <script>
-    // Resolver HERO (prueba de varias URLs)
+    // Resolver HERO
     const heroCandidates = [
       "https://raw.githubusercontent.com/antufs/home/main/Ant%C3%BC_en_vivo_La_Tangente_02.jpg",
       "https://raw.githubusercontent.com/antufs/home/main/Antu_en_vivo_La_Tangente_02.jpg",
@@ -325,7 +332,7 @@
       test.src = heroCandidates[i] + "?v=5";
     })();
 
-    // Ocultar riel social cuando no está el HERO a la vista
+    // Riel social según HERO visible
     const rail = document.getElementById('rail');
     const hero = document.getElementById('hero');
     const io = new IntersectionObserver((entries)=>{
@@ -336,7 +343,7 @@
     }, {threshold:0.15});
     io.observe(hero);
 
-    // NAV: volver sólido al salir del hero
+    // NAV sólida al salir del hero (sin borde)
     const topNav = document.getElementById('topNav');
     const navObserver = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
@@ -353,12 +360,8 @@
       box.innerHTML=`<iframe src="${buildSrc(id)}" title="Video principal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>`;
       box.scrollIntoView({behavior:"smooth",block:"start"});
     }
-    // Principal: Pésima Idea
     document.getElementById('previewBtn').addEventListener('click',()=>load('kUaB9VScdi0'));
-    // Thumbnails
     document.querySelectorAll('.thumb').forEach(b=>b.addEventListener('click',()=>load(b.dataset.id)));
   </script>
 </body>
 </html>
-
-
