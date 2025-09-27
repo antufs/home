@@ -19,7 +19,10 @@
       --playBorder: rgba(255,255,255,.9);
       --navBg: rgba(10,10,10,.55);
       --navShadow: 0 6px 18px rgba(0,0,0,.25);
-      --vspace: 56px;
+
+      /* Espacios controlados */
+      --gapIconsTop: 56px;       /* BIO → Íconos */
+      --gapIconsBottom: 104px;   /* Íconos → Footer (más aire) */
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -38,7 +41,7 @@
       filter:blur(20px) brightness(.38);
       pointer-events:none;
     }
-    /* Capa de vidrio única */
+    /* Capa de vidrio única (evita costuras) */
     body::before{
       content:""; position:fixed; inset:0; z-index:-2;
       background:var(--panel);
@@ -107,17 +110,16 @@
     @media(min-width:820px){ .thumbs{grid-template-columns:repeat(4,1fr)} }
     .thumb,button.thumb{border:0!important;outline:0!important;box-shadow:none!important;padding:0;background:#111;-webkit-tap-highlight-color:transparent}
     .thumb{position:relative;border-radius:0;overflow:hidden;cursor:pointer}
-    /* === Miniaturas: volver al encuadre completo (sin recorte) === */
+    /* Miniaturas: encuadre completo (sin recorte) */
     .thumb img{
       width:100%;height:100%;
-      object-fit:contain;              /* <— antes estaba cover */
+      object-fit:contain;
       aspect-ratio:16/9;
-      background:#000;                 /* letterbox */
+      background:#000;
       border-radius:0;display:block;border:0
     }
     .thumb::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.14);transition:opacity .2s}
     .thumb:hover::after,.thumb:focus-visible::after{opacity:.06}
-    /* Título sutil en hover */
     .thumb .vtitle{
       position:absolute;left:10px;bottom:10px;color:#fff;
       font-size:.8rem;letter-spacing:.02em;font-weight:600;
@@ -130,10 +132,10 @@
     .thumb .pico{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:999px;border:2px solid #fff;display:grid;place-items:center}
     .thumb .pico svg{width:11px;height:11px;fill:#fff;margin-left:2px}
 
-    /* Espaciado uniforme BIO / ICONOS / FOOTER */
+    /* BIO / ICONOS / FOOTER */
     #bio{ padding-bottom: 0; }
     .final-social{ padding: 0; }
-    .final-social::before{ content:""; display:block; height: var(--vspace); }
+    .final-social::before{ content:""; display:block; height: var(--gapIconsTop); }
     .social-bottom{
       display:flex; gap:22px; justify-content:center; align-items:center; flex-wrap:wrap;
       margin:0 auto; max-width:var(--max);
@@ -142,7 +144,11 @@
     .social-bottom a:hover{ transform:translateY(-3px) scale(1.03); filter:brightness(1.05) }
     .social-bottom img{width:28px;height:28px;display:block}
 
-    footer{background:transparent;text-align:center;color:#9a9a9a;padding: var(--vspace) 0}
+    footer{
+      background:transparent;
+      text-align:center;color:#9a9a9a;
+      padding: var(--gapIconsBottom) 0; /* MÁS aire desde los íconos */
+    }
   </style>
 </head>
 <body>
