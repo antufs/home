@@ -5,10 +5,20 @@
     <loc>https://antu.musica.ar/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+
+    <!-- Imagen La Tangente -->
     <image:image>
       <image:loc>https://raw.githubusercontent.com/antufs/home/refs/heads/main/Antu-Filardi-Sabin_La_Tangente.jpg</image:loc>
       <image:caption>Antü Filardi Sabín en vivo — La Tangente</image:caption>
       <image:title>Antü Filardi Sabín</image:title>
     </image:image>
+
+    <!-- Imagen BIO -->
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/antufs/home/aa257988f4f8d24b966a7cb14f8e2823106d5aa0/Antu%20Filardi%20Sabin%20BIO.jpg</image:loc>
+      <image:caption>Antü Filardi Sabín — Retrato oficial para biografía</image:caption>
+      <image:title>Antü Filardi Sabín</image:title>
+    </image:image>
+
   </url>
 </urlset>
