@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://antu.musica.ar/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/antufs/home/refs/heads/main/Antu-Filardi-Sabin_La_Tangente.jpg</image:loc>
+      <image:caption>Antü Filardi Sabín en vivo — La Tangente</image:caption>
+      <image:title>Antü Filardi Sabín</image:title>
+    </image:image>
   </url>
 </urlset>
