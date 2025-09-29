@@ -9,6 +9,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
+  <!-- Preconnect y Preload para el HERO -->
+  <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/antufs/home/main/Ant%C3%BC_en_vivo_La_Tangente_02.jpg">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/antufs/home/main/Antu_en_vivo_La_Tangente_02.jpg">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/antufs/home/main/Ant%C3%BC_en_La_Tangente_WEB_005.jpg">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/antufs/home/main/Ant%C3%BC_en_La_Tangente_WEB_005.png">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/antufs/home/main/Antu_en_La_Tangente_WEB_005.jpg">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/antufs/home/main/Antu_en_La_Tangente_WEB_005.png">
+
   <style>
     :root{
       --bg:#0b0b0b; --fg:#f2f2f2; --line:rgba(255,255,255,.10);
@@ -147,7 +156,10 @@
     footer{
       background:transparent;
       text-align:center;color:#9a9a9a;
-      padding: var(--gapIconsBottom) 0; /* MÁS aire desde los íconos */
+      padding: var(--gapIconsBottom) 0; /* más aire desde los íconos */
+      font-size:12px;                /* ← tamaño reducido */
+      line-height:1;                 /* compacto y prolijo */
+      letter-spacing:.02em;
     }
   </style>
 </head>
@@ -188,7 +200,8 @@
 
   <!-- HERO -->
   <header class="hero" id="hero" aria-label="Antü Filardi Sabín en vivo — Buenos Aires, Argentina">
-    <img id="heroImg" class="hero-img" alt="Antü Filardi Sabín en vivo — Buenos Aires, Argentina">
+    <!-- alt vacío + aria-hidden para que no se muestre ningún texto antes de cargar -->
+    <img id="heroImg" class="hero-img" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
     <div class="hero-inner wrap"></div>
   </header>
 
@@ -256,7 +269,7 @@
   <section id="video">
     <div class="wrap">
       <h2>Video</h2>
-    <div class="video-wrap">
+      <div class="video-wrap">
         <div class="player" id="playerBox">
           <div class="preview" id="previewBtn" aria-label="Reproducir Pésima Idea">
             <span class="playBtn">
@@ -331,7 +344,7 @@
     </div>
   </section>
 
-  <footer>© ANTÜ — 2025</footer>
+  <footer>© Antü | 2025</footer>
 
   <script>
     // Resolver HERO
@@ -348,7 +361,8 @@
       const test = new Image();
       test.onload = () => {
         const url = heroCandidates[i];
-        document.getElementById("heroImg").src = url + "?v=5";
+        const heroImg = document.getElementById("heroImg");
+        heroImg.src = url + "?v=5";
         document.querySelector(".page-bg").style.backgroundImage = `url('${url}?v=5')`;
       };
       test.onerror = () => resolveHero(i+1);
@@ -388,8 +402,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
