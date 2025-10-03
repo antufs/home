@@ -18,6 +18,212 @@
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/antufs/home/main/Antu_en_La_Tangente_WEB_005.jpg">
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/antufs/home/main/Antu_en_La_Tangente_WEB_005.png">
 
+  <!-- JSON-LD: grafo principal -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://antu.musica.ar/#website",
+        "url": "https://antu.musica.ar/",
+        "name": "ANTÜ — Sitio oficial",
+        "inLanguage": "es-AR",
+        "publisher": { "@id": "https://antu.musica.ar/#person" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.google.com/search?q=site:antu.musica.ar+{search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://antu.musica.ar/#home",
+        "url": "https://antu.musica.ar/",
+        "name": "ANTÜ | Sitio oficial de Antü Filardi Sabín",
+        "isPartOf": { "@id": "https://antu.musica.ar/#website" },
+        "inLanguage": "es-AR",
+        "about": { "@id": "https://antu.musica.ar/#person" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "contentUrl": "https://raw.githubusercontent.com/antufs/home/main/Antu_en_La_Tangente_WEB_005.jpg"
+        }
+      },
+      {
+        "@type": "MusicGroup",
+        "@id": "https://antu.musica.ar/#maniacmantu",
+        "name": "Maniac Mantu",
+        "url": "https://maniacmantu.bandcamp.com/",
+        "sameAs": ["https://maniacmantu.bandcamp.com/"]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://antu.musica.ar/#person",
+        "name": "Antü Filardi Sabín",
+        "alternateName": ["Antü", "Antü Filardi"],
+        "url": "https://antu.musica.ar/",
+        "image": "https://raw.githubusercontent.com/antufs/home/main/Antu%20Filardi%20Sabin%20BIO.jpg",
+        "description": "Músico argentino que cruza canción, electrónica y guitarras, con un enfoque poético y contemporáneo.",
+        "jobTitle": "Músico, compositor y productor",
+        "birthDate": "1983-11-28",
+        "nationality": { "@type": "Country", "name": "Argentina" },
+        "genre": ["Pop experimental", "Electrónica", "Rock alternativo"],
+        "memberOf": { "@id": "https://antu.musica.ar/#maniacmantu" },
+        "sameAs": [
+          "https://genius.com/artists/Antu-filardi-sabin",
+          "https://open.spotify.com/artist/4VUdU55D7NI4m4z4W3hf3D",
+          "https://music.apple.com/pe/album/sobresalto-ep/1614863374",
+          "https://www.youtube.com/@antufs",
+          "https://www.instagram.com/antu.fs/",
+          "https://www.facebook.com/antufs",
+          "https://maniacmantu.bandcamp.com/"
+        ]
+      },
+      {
+        "@type": "MusicAlbum",
+        "@id": "https://open.spotify.com/album/7dWdYfdCnAjZANqv4cCefN",
+        "name": "Buenas Noches, Muchas Gracias",
+        "albumReleaseType": "EP",
+        "datePublished": "2024",
+        "byArtist": { "@id": "https://antu.musica.ar/#person" },
+        "image": "https://raw.githubusercontent.com/antufs/home/main/BUENASNOCHES-grande-EMBOSS-3.jpg",
+        "url": "https://open.spotify.com/intl-es/album/7dWdYfdCnAjZANqv4cCefN"
+      },
+      {
+        "@type": "MusicRecording",
+        "@id": "https://open.spotify.com/album/44ufv6xvc8k3mpDwtsSrJ4",
+        "name": "Clima Nuestro",
+        "datePublished": "2024",
+        "inAlbum": { "@id": "https://open.spotify.com/album/44ufv6xvc8k3mpDwtsSrJ4" },
+        "byArtist": { "@id": "https://antu.musica.ar/#person" },
+        "image": "https://raw.githubusercontent.com/antufs/home/main/CLIMA-NUESTRO_ARTCOVER_OK.jpg",
+        "url": "https://open.spotify.com/intl-es/album/44ufv6xvc8k3mpDwtsSrJ4"
+      },
+      {
+        "@type": "MusicRecording",
+        "@id": "https://open.spotify.com/album/13GD7ic2DUEkxegRCUD1pO",
+        "name": "Canción de Enero",
+        "datePublished": "2023",
+        "inAlbum": { "@id": "https://open.spotify.com/album/13GD7ic2DUEkxegRCUD1pO" },
+        "byArtist": { "@id": "https://antu.musica.ar/#person" },
+        "image": "https://raw.githubusercontent.com/antufs/home/main/CANCION-DE-ENERO_ARTCOVER_02_OK.jpg",
+        "url": "https://open.spotify.com/intl-es/album/13GD7ic2DUEkxegRCUD1pO"
+      },
+      {
+        "@type": "MusicRecording",
+        "@id": "https://open.spotify.com/album/2lqGII1JPnV5ZFQE7t4V8m",
+        "name": "Sos Mucho Más",
+        "datePublished": "2023",
+        "inAlbum": { "@id": "https://open.spotify.com/album/2lqGII1JPnV5ZFQE7t4V8m" },
+        "byArtist": { "@id": "https://antu.musica.ar/#person" },
+        "image": "https://raw.githubusercontent.com/antufs/home/main/sos1.jpg",
+        "url": "https://open.spotify.com/intl-es/album/2lqGII1JPnV5ZFQE7t4V8m"
+      },
+      {
+        "@type": "MusicAlbum",
+        "@id": "https://open.spotify.com/album/3gwwNO0NYRwur59wiUsdN6",
+        "name": "SOBRESALTO",
+        "datePublished": "2022",
+        "byArtist": { "@id": "https://antu.musica.ar/#person" },
+        "image": "https://raw.githubusercontent.com/antufs/home/main/sobresalto-arte.jpg",
+        "url": "https://open.spotify.com/intl-es/album/3gwwNO0NYRwur59wiUsdN6"
+      },
+      {
+        "@type": "MusicRecording",
+        "@id": "https://open.spotify.com/album/21z3C3ezWta9FwsKf8eaXT",
+        "name": "Lechuzas Amigas",
+        "datePublished": "2021",
+        "inAlbum": { "@id": "https://open.spotify.com/album/21z3C3ezWta9FwsKf8eaXT" },
+        "byArtist": { "@id": "https://antu.musica.ar/#person" },
+        "image": "https://raw.githubusercontent.com/antufs/home/main/lechuzasamigas_single_antu.jpg",
+        "url": "https://open.spotify.com/intl-es/album/21z3C3ezWta9FwsKf8eaXT"
+      },
+      {
+        "@type": "MusicRecording",
+        "@id": "https://open.spotify.com/album/3Br5AmEKvysIe55lGHiXec",
+        "name": "Lluvia de Plata",
+        "datePublished": "2020",
+        "inAlbum": { "@id": "https://open.spotify.com/album/3Br5AmEKvysIe55lGHiXec" },
+        "byArtist": { "@id": "https://antu.musica.ar/#person" },
+        "image": "https://raw.githubusercontent.com/antufs/home/main/lluviadeplata_antu.jpg",
+        "url": "https://open.spotify.com/intl-es/album/3Br5AmEKvysIe55lGHiXec"
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Página/12 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "@id": "https://www.pagina12.com.ar/395430-inevitables#lechuzas-amigas",
+    "mainEntityOfPage": "https://www.pagina12.com.ar/395430-inevitables",
+    "headline": "Inevitables — Lechuzas amigas",
+    "datePublished": "2022-01-16T00:47:00-03:00",
+    "dateModified": "2022-01-16T00:47:00-03:00",
+    "inLanguage": "es-AR",
+    "articleSection": "Radar",
+    "about": [
+      { "@id": "https://antu.musica.ar/#person" },
+      {
+        "@type": "MusicRecording",
+        "name": "Lechuzas Amigas",
+        "datePublished": "2021",
+        "byArtist": { "@id": "https://antu.musica.ar/#person" },
+        "url": "https://open.spotify.com/album/21z3C3ezWta9FwsKf8eaXT"
+      }
+    ],
+    "publisher": {
+      "@type": "NewsMediaOrganization",
+      "name": "Página/12",
+      "url": "https://www.pagina12.com.ar"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: Filo.news -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "@id": "https://www.filo.news/Trap-ska-pop-y-reggaeton-14-estrenos-musicales-para-tu-fin-de-semana-t202201210001.html#lechuzas-amigas",
+    "mainEntityOfPage": "https://www.filo.news/Trap-ska-pop-y-reggaeton-14-estrenos-musicales-para-tu-fin-de-semana-t202201210001.html",
+    "headline": "Trap, ska, pop y reggaetón: 14 estrenos musicales para tu fin de semana",
+    "datePublished": "2022-01-21T00:00:00-03:00",
+    "dateModified": "2022-01-21T00:00:00-03:00",
+    "inLanguage": "es-AR",
+    "articleSection": "Música",
+    "about": [
+      { "@id": "https://antu.musica.ar/#person" },
+      {
+        "@type": "MusicRecording",
+        "name": "Lechuzas Amigas",
+        "datePublished": "2021",
+        "byArtist": { "@id": "https://antu.musica.ar/#person" },
+        "url": "https://open.spotify.com/album/21z3C3ezWta9FwsKf8eaXT"
+      }
+    ],
+    "publisher": {
+      "@type": "NewsMediaOrganization",
+      "name": "Filo.news",
+      "url": "https://www.filo.news"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: subjectOf (enlaza ambas notas a tu Persona) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@id": "https://antu.musica.ar/#person",
+    "subjectOf": [
+      { "@type": "NewsArticle", "@id": "https://www.pagina12.com.ar/395430-inevitables#lechuzas-amigas" },
+      { "@type": "NewsArticle", "@id": "https://www.filo.news/Trap-ska-pop-y-reggaeton-14-estrenos-musicales-para-tu-fin-de-semana-t202201210001.html#lechuzas-amigas" }
+    ]
+  }
+  </script>
+
   <style>
     :root{
       --bg:#0b0b0b; --fg:#f2f2f2; --line:rgba(255,255,255,.10);
@@ -119,7 +325,6 @@
     @media(min-width:820px){ .thumbs{grid-template-columns:repeat(4,1fr)} }
     .thumb,button.thumb{border:0!important;outline:0!important;box-shadow:none!important;padding:0;background:#111;-webkit-tap-highlight-color:transparent}
     .thumb{position:relative;border-radius:0;overflow:hidden;cursor:pointer}
-    /* Miniaturas: encuadre completo (sin recorte) */
     .thumb img{
       width:100%;height:100%;
       object-fit:contain;
@@ -402,5 +607,3 @@
   </script>
 </body>
 </html>
-
-
