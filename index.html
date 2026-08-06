@@ -314,6 +314,16 @@
     .overlay .t{font-family:"Syne",system-ui,sans-serif;font-weight:800}
     .overlay .s{font-size:.9rem;opacity:.9}
 
+    /* Tiles divididos en díptico (una tapa compartida entre dos cuadrados) */
+    .tile.split{ aspect-ratio:1/1; }
+    .tile.split img{
+      position:absolute; inset:0; width:200%; max-width:none; height:100%;
+      object-fit:cover; aspect-ratio:auto; transform:none;
+    }
+    .tile.split.left img{ left:0; }
+    .tile.split.right img{ left:-100%; }
+    .tile.split:hover img{ transform:none; filter:brightness(1.12) saturate(.88) }
+
     /* Video */
     .video-wrap{display:grid;gap:18px}
     .player{ position:relative;width:100%;aspect-ratio:16/9;border-radius:0;overflow:hidden;background:#000 }
@@ -470,11 +480,11 @@
           <img src="https://raw.githubusercontent.com/antufs/home/main/BUENASNOCHES-grande-EMBOSS-3.jpg" alt="ANTÜ — Buenas Noches, Muchas Gracias (EP, 2024)">
           <span class="overlay"><span class="t">BUENAS NOCHES, MUCHAS GRACIAS</span><span class="s">EP, 2024</span></span>
         </a>
-        <a class="tile" href="https://open.spotify.com/intl-es/album/44ufv6xvc8k3mpDwtsSrJ4" target="_blank" rel="noopener">
+        <a class="tile split left" href="https://open.spotify.com/intl-es/album/44ufv6xvc8k3mpDwtsSrJ4" target="_blank" rel="noopener">
           <img src="https://raw.githubusercontent.com/antufs/home/main/CLIMA-NUESTRO_ARTCOVER_OK.jpg" alt="ANTÜ — Clima Nuestro (single, 2024)">
           <span class="overlay"><span class="t">CLIMA NUESTRO</span><span class="s">SINGLE, 2024</span></span>
         </a>
-        <a class="tile" href="https://open.spotify.com/intl-es/album/13GD7ic2DUEkxegRCUD1pO" target="_blank" rel="noopener">
+        <a class="tile split right" href="https://open.spotify.com/intl-es/album/13GD7ic2DUEkxegRCUD1pO" target="_blank" rel="noopener">
           <img src="https://raw.githubusercontent.com/antufs/home/main/CANCION-DE-ENERO_ARTCOVER_02_OK.jpg" alt="ANTÜ — Canción de Enero (single, 2023)">
           <span class="overlay"><span class="t">CANCIÓN DE ENERO</span><span class="s">SINGLE, 2023</span></span>
         </a>
