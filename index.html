@@ -283,7 +283,7 @@
 
     /* HERO */
     .hero{position:relative;min-height:100vh;min-height:100svh;width:100%;isolation:isolate}
-    .hero-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0}
+    .hero-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 15%; z-index:0}
     .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.18) 0%, rgba(0,0,0,.48) 55%, rgba(0,0,0,.75) 100%)}
     .hero-inner{position:absolute;inset:0;display:grid;place-items:end start;padding:8vh 5vw;z-index:2}
 
@@ -368,11 +368,46 @@
       line-height:1;                 /* compacto y prolijo */
       letter-spacing:.02em;
     }
+
+    /* Estela del cursor */
+    #cursorTrail{
+      position:fixed; inset:0; z-index:9999;
+      pointer-events:none; mix-blend-mode:screen;
+    }
+
+    /* PRÓXIMO LANZAMIENTO — superpuesto en el hero */
+    .next-release{ max-width:560px }
+    .next-tag{
+      display:inline-block; font-family:"Syne",system-ui,sans-serif; font-weight:800;
+      font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+      color:#0b0b0b; background:var(--accent);
+      padding:5px 10px; margin-bottom:16px;
+    }
+    .next-title{
+      font-family:"Syne",system-ui,sans-serif; font-weight:800; text-transform:uppercase;
+      letter-spacing:.03em; font-size:clamp(32px,6vw,58px); margin:0 0 10px; color:#fff;
+      line-height:1.02; text-shadow:0 4px 24px rgba(0,0,0,.45);
+    }
+    .next-date{ margin:0 0 26px; color:#e6e6e6; font-size:1rem; letter-spacing:.03em; text-shadow:0 2px 10px rgba(0,0,0,.4) }
+    .next-actions{ display:flex; flex-wrap:wrap; gap:14px }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      font-family:"Inter Tight",system-ui,sans-serif; font-weight:600;
+      text-transform:uppercase; letter-spacing:.08em; font-size:.82rem;
+      padding:13px 22px; border-radius:999px; cursor:pointer;
+      transition:transform .18s ease, background .2s ease, filter .2s ease;
+    }
+    .btn:hover{ transform:translateY(-2px) }
+    .btn-presave{ background:var(--accent); color:#0b0b0b }
+    .btn-presave:hover{ filter:brightness(1.08) }
+    .btn-redeem{ background:transparent; color:#fff; border:2px solid rgba(255,255,255,.55) }
+    .btn-redeem:hover{ border-color:#fff; background:rgba(255,255,255,.08) }
   </style>
 </head>
 <body>
 
   <div class="page-bg" aria-hidden="true"></div>
+  <canvas id="cursorTrail" aria-hidden="true"></canvas>
 
   <!-- NAV -->
   <nav class="nav" id="topNav" aria-label="Navegación principal">
@@ -409,7 +444,17 @@
   <header class="hero" id="hero" aria-label="Antü Filardi Sabín en vivo — Buenos Aires, Argentina">
     <!-- alt vacío + aria-hidden para que no se muestre ningún texto antes de cargar -->
     <img id="heroImg" class="hero-img" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
-    <div class="hero-inner wrap"></div>
+    <div class="hero-inner wrap">
+      <div class="next-release" id="next-release" aria-label="Próximo lanzamiento">
+        <span class="next-tag">Próximamente</span>
+        <h1 class="next-title">Fondo Común</h1>
+        <p class="next-date">14 de agosto</p>
+        <div class="next-actions">
+          <a class="btn btn-presave" href="https://onerpm.link/219226301328" target="_blank" rel="noopener">Presave</a>
+          <a class="btn btn-redeem" href="https://bandcamp.com/yum" target="_blank" rel="noopener">Canjear código Bandcamp</a>
+        </div>
+      </div>
+    </div>
   </header>
 
   <!-- RELEASES -->
@@ -418,6 +463,10 @@
       <h2>Releases</h2>
       <div class="grid">
         <!-- ANTÜ -->
+        <a class="tile" href="https://antumusica.bandcamp.com/" target="_blank" rel="noopener">
+          <img src="https://raw.githubusercontent.com/antufs/home/abf6453b97849bcd390be057b7816102c5e7596e/Fondo_comun_portada_2026.jpg" alt="ANTÜ — Fondo Común (próximamente)">
+          <span class="overlay"><span class="t">FONDO COMÚN</span><span class="s">PRÓXIMAMENTE</span></span>
+        </a>
         <a class="tile" href="https://open.spotify.com/intl-es/album/7dWdYfdCnAjZANqv4cCefN" target="_blank" rel="noopener">
           <img src="https://raw.githubusercontent.com/antufs/home/main/BUENASNOCHES-grande-EMBOSS-3.jpg" alt="ANTÜ — Buenas Noches, Muchas Gracias (EP, 2024)">
           <span class="overlay"><span class="t">BUENAS NOCHES, MUCHAS GRACIAS</span><span class="s">EP, 2024</span></span>
@@ -425,10 +474,6 @@
         <a class="tile" href="https://open.spotify.com/intl-es/album/44ufv6xvc8k3mpDwtsSrJ4" target="_blank" rel="noopener">
           <img src="https://raw.githubusercontent.com/antufs/home/main/CLIMA-NUESTRO_ARTCOVER_OK.jpg" alt="ANTÜ — Clima Nuestro (single, 2024)">
           <span class="overlay"><span class="t">CLIMA NUESTRO</span><span class="s">SINGLE, 2024</span></span>
-        </a>
-        <a class="tile" href="https://open.spotify.com/intl-es/album/13GD7ic2DUEkxegRCUD1pO" target="_blank" rel="noopener">
-          <img src="https://raw.githubusercontent.com/antufs/home/main/CANCION-DE-ENERO_ARTCOVER_02_OK.jpg" alt="ANTÜ — Canción de Enero (single, 2023)">
-          <span class="overlay"><span class="t">CANCIÓN DE ENERO</span><span class="s">SINGLE, 2023</span></span>
         </a>
         <a class="tile" href="https://open.spotify.com/intl-es/album/2lqGII1JPnV5ZFQE7t4V8m" target="_blank" rel="noopener">
           <img src="https://raw.githubusercontent.com/antufs/home/main/sos1.jpg" alt="ANTÜ — Sos Mucho Más (single, 2023)">
@@ -536,7 +581,7 @@
                <p>Antü Filardi Sabín es un músico argentino nacido en Buenos Aires.</p>
 <p>En 2011 editó <em>ARMOR</em> bajo el seudónimo <em>Maniac Mantu</em>, su primer trabajo independiente. Ese material dio origen a la banda del mismo nombre, con la que publicó <em>Páramo Cuartal</em> (2013), el EP en vivo <em>M M M E T</em> y <em>Momento Dado</em> (2018).</p>
 <p>En 2021 presentó el sencillo <em>Lechuzas Amigas</em>. En 2022 lanzó <em>SOBRESALTO</em>. Luego publicó los sencillos <em>Canción de Enero</em> y <em>Sos Mucho Más</em> (2024). Ese mismo año editó <em>Clima Nuestro</em> y el EP <em>Buenas Noches, Muchas Gracias</em>.</p>
-<p>Actualmente continúa grabando y presentándose en vivo.</p>      </div>
+<p>Su nuevo trabajo, <em>Fondo Común</em>, fue grabado en Río de Janeiro junto a los músicos cariocas Kassin, Domenico Lancellotti y Pedro Sá, con las cuerdas de Agostina Tagliapietra y Martín Scian, producción de Pedro Sá y arte de Carla Grunauer.</p>      </div>
     </div>
   </section>
 
@@ -569,6 +614,77 @@
   <footer>© Antü | 2025</footer>
 
   <script>
+    // Estela del cursor (solo en dispositivos con puntero fino)
+    if (window.matchMedia('(pointer: fine)').matches) {
+      const canvas = document.getElementById('cursorTrail');
+      const ctx = canvas.getContext('2d');
+      let W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      function resize(){
+        W = window.innerWidth; H = window.innerHeight;
+        canvas.width = W * dpr; canvas.height = H * dpr;
+        canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#ffd9b6';
+      function hexToRgb(hex){
+        const h = hex.replace('#','');
+        const n = parseInt(h.length===3 ? h.split('').map(c=>c+c).join('') : h, 16);
+        return [(n>>16)&255,(n>>8)&255,n&255];
+      }
+      const [r,g,b] = hexToRgb(accent);
+
+      // Un puñado de "seguidores" que persiguen al cursor con retardo creciente:
+      // genera un rastro suave tipo cometa, sin líneas duras ni puntos sueltos.
+      const FOLLOWERS = 9;
+      const followers = Array.from({ length: FOLLOWERS }, () => ({ x: null, y: null }));
+      let mouseX = null, mouseY = null;
+      let visible = false;
+
+      window.addEventListener('pointermove', (e) => {
+        mouseX = e.clientX; mouseY = e.clientY;
+        if (!visible) {
+          followers.forEach(f => { f.x = mouseX; f.y = mouseY; });
+          visible = true;
+        }
+      });
+      window.addEventListener('pointerleave', () => { visible = false; });
+
+      function draw(){
+        ctx.clearRect(0, 0, W, H);
+
+        if (visible && mouseX !== null) {
+          let px = mouseX, py = mouseY;
+          for (let i = 0; i < followers.length; i++) {
+            const f = followers[i];
+            const ease = 0.32 - i * 0.012; // los últimos quedan un poco más rezagados
+            f.x += (px - f.x) * ease;
+            f.y += (py - f.y) * ease;
+
+            const t = 1 - i / followers.length; // 1 = cerca del cursor, 0 = cola
+            const radius = 5.5 * t + 1.2;
+            const alpha = 0.16 * t;
+
+            const grad = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, radius * 4);
+            grad.addColorStop(0, `rgba(${r},${g},${b},${alpha})`);
+            grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.arc(f.x, f.y, radius * 4, 0, Math.PI * 2);
+            ctx.fill();
+
+            px = f.x; py = f.y;
+          }
+        }
+
+        requestAnimationFrame(draw);
+      }
+      requestAnimationFrame(draw);
+    }
+
     // Resolver HERO
     const heroCandidates = [
       "https://raw.githubusercontent.com/antufs/home/main/Ant%C3%BC_en_vivo_La_Tangente_02.jpg",
