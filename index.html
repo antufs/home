@@ -309,10 +309,10 @@
     .tile{position:relative;border-radius:0;overflow:hidden;background:#111}
     .tile img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1;transition:filter .3s,transform .35s;border-radius:0}
     .tile:hover img{filter:brightness(1.12) saturate(.88);transform:scale(1.03)}
-    .overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;text-transform:uppercase;letter-spacing:.12em;opacity:0;transition:opacity .25s;background:rgba(255,255,255,.20);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+    .overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;text-transform:uppercase;letter-spacing:.12em;opacity:0;transition:opacity .25s;background:rgba(10,10,12,.55);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);color:#fff}
     .tile:hover .overlay{opacity:1}
-    .overlay .t{font-family:"Syne",system-ui,sans-serif;font-weight:800}
-    .overlay .s{font-size:.9rem;opacity:.9}
+    .overlay .t{font-family:"Syne",system-ui,sans-serif;font-weight:800;text-shadow:0 2px 10px rgba(0,0,0,.65)}
+    .overlay .s{font-size:.9rem;opacity:.95;text-shadow:0 1px 8px rgba(0,0,0,.6)}
 
     /* Tiles divididos en díptico (una tapa compartida entre dos cuadrados) */
     .tile.split{ aspect-ratio:1/1; }
@@ -442,7 +442,7 @@
     <a href="https://www.facebook.com/antufs" target="_blank" rel="noopener" aria-label="Facebook — antufs">
       <img src="https://static.wixstatic.com/media/e0678ef25486466ba65ef6ad47b559e1.png?v=3" alt="Facebook — antufs">
     </a>
-    <a href="https://antumusica.bandcamp.com/" target="_blank" rel="noopener" aria-label="Bandcamp — Maniac Mantu">
+    <a href="https://maniacmantu.bandcamp.com/" target="_blank" rel="noopener" aria-label="Bandcamp — Maniac Mantu">
       <img src="https://raw.githubusercontent.com/antufs/home/main/bandcamp-button-circle-line-white-512.png" alt="Bandcamp — Maniac Mantu">
     </a>
     <a href="https://music.apple.com/pe/album/sobresalto-ep/1614863374" target="_blank" rel="noopener" aria-label="Apple Music — Sobresalto">
@@ -456,11 +456,11 @@
     <img id="heroImg" class="hero-img" alt="" aria-hidden="true" fetchpriority="high" decoding="async">
     <div class="hero-inner wrap">
       <div class="next-release" id="next-release" aria-label="Próximo lanzamiento">
-        <span class="next-tag">14 de agosto</span>
+        <span class="next-tag">Nuevo disco</span>
         <h1 class="next-title">Fondo Común</h1>
         <div class="next-actions">
-          <a class="btn btn-presave" href="https://onerpm.link/219226301328" target="_blank" rel="noopener">Presave</a>
-          <a class="btn btn-redeem" href="https://antumusica.bandcamp.com/yum" target="_blank" rel="noopener">Canjear código</a>
+          <a class="btn btn-presave" href="https://open.spotify.com/intl-es/artist/4VUdU55D7NI4m4z4W3hf3D?si=gCUL3Pa0Rt2RDWX1h3sn3A" target="_blank" rel="noopener">Escuchar</a>
+          <a class="btn btn-redeem" href="https://antumusica.bandcamp.com/yum" target="_blank" rel="noopener">Download</a>
         </div>
       </div>
     </div>
@@ -474,7 +474,7 @@
         <!-- ANTÜ -->
         <a class="tile" href="https://antumusica.bandcamp.com/" target="_blank" rel="noopener">
           <img src="https://raw.githubusercontent.com/antufs/home/abf6453b97849bcd390be057b7816102c5e7596e/Fondo_comun_portada_2026.jpg" alt="ANTÜ — Fondo Común (próximamente)">
-          <span class="overlay"><span class="t">FONDO COMÚN</span><span class="s">PRÓXIMAMENTE</span></span>
+          <span class="overlay"><span class="t">FONDO COMÚN</span></span>
         </a>
         <a class="tile" href="https://open.spotify.com/intl-es/album/7dWdYfdCnAjZANqv4cCefN" target="_blank" rel="noopener">
           <img src="https://raw.githubusercontent.com/antufs/home/main/BUENASNOCHES-grande-EMBOSS-3.jpg" alt="ANTÜ — Buenas Noches, Muchas Gracias (EP, 2024)">
@@ -623,7 +623,7 @@
     </div>
   </section>
 
-  <footer>© Antü | 2026</footer>
+  <footer>© Antü | 2025</footer>
 
   <script>
     // Estela del cursor (solo en dispositivos con puntero fino)
